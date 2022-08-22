@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  cgi-python-web:
+    build:
+      context: ./
+      args:
+        - APP_FOLDER=app
+    image: cgi-python
+    container_name: cgi-python-web
+    ports:
+      - "8080:8080"
+    volumes:
+      - type: bind
+        source: source
+        target: /usr/src/app/source
+    environment:
+      ENV: development
