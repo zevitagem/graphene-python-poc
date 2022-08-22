@@ -1,5 +1,4 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
-import time
 import os
 from core.infrastructure.http.action.SearcherController import SearcherController
 
@@ -22,7 +21,6 @@ class MyServer(BaseHTTPRequestHandler):
 
         response = getattr(SearcherController(), self.sanitize_path(self.path))()
 
-        #self.path
         self.wfile.write(bytes(response, "utf-8"))
 
 if __name__ == "__main__":        
