@@ -16,7 +16,7 @@ class SearcherController(BaseController):
     def query(self, request):
         text = request['query']['name'] if ('name' in request['query']) else 'guest'
 
-        query_string = '{ hello(name:"(%s)") }' % text
+        query_string = '{ hello(name:"%s") }' % text
         result = self.service.execute(query_string)
 
         return BaseController.view(self, 'specific', {
