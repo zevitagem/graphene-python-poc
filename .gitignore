@@ -1,8 +1,14 @@
 .idea
 .DS_Store
 venv
+source/core/infrastructure/http/action/__pycache__
 source/core/infrastructure/http/__pycache__
 source/core/infrastructure/http/__pycache__
+source/core/infrastructure/repositories/__pycache__/
+source/core/application/containers/__pycache__
 source/core/application/factories/__pycache__
 source/core/application/services/__pycache__
-source/core/infrastructure/http/action/__pycache__
+source/core/domain/entities/__pycache__/
+source/core/domain/interfaces/__pycache__/
+source/core/domain/mutations/__pycache__/
+source/core/domain/types/__pycache__/

@@ -115,7 +115,7 @@ Server started http://0.0.0.0:8082
 
 ### Observações
 - Todos os dados estão `mocados`, ou seja, NÃO existe persistência alguma dos dados enviados.
-- IDS menores ou iguais a 10, serão considerados como `Droid`. Maiores que 10, serão considerados `Desenvolvedores`.
+- IDS menores ou iguais a 10, serão considerados como `Droids`. Maiores que 10, serão considerados `Devs`.
 
 ## Referências
 - https://graphene-python.org/
