@@ -1,14 +1,14 @@
 version: "3.9"
 services:
-  cgi-python-web:
+  python-server:
     build:
       context: ./
       args:
         - APP_FOLDER=app
-    image: cgi-python
-    container_name: cgi-python-web
+    image: python-server-image
+    container_name: python-server
     ports:
-      - "8080:8080"
+      - "8080:8082"
     volumes:
       - type: bind
         source: source
