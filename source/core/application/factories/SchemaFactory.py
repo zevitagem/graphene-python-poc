@@ -1,11 +1,11 @@
-from core.domain.graphene.Query import Query as GrapheneQuery
 from graphene import Schema
 
 class SchemaFactory():
-    
-    def handle(self):
-        query = self.__graphene()
-        return Schema(query=query)
 
-    def __graphene(self):
-        return GrapheneQuery
+    @staticmethod
+    def handle(config):
+
+        if 'query' not in config and 'mutation' not in config:
+            raise ValueError('The "query" or "mutation" attribute must be exists in config')
+
+        return Schema(**config)

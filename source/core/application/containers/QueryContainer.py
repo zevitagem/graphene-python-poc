@@ -1,6 +1,6 @@
 from graphene import ObjectType, String
 
-class Query(ObjectType):
+class QueryContainer(ObjectType):
 
     hello = String(name=String(default_value="guest"))
     goodbye = String()

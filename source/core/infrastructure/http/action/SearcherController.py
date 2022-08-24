@@ -22,4 +22,24 @@ class SearcherController(BaseController):
         return BaseController.view(self, 'specific', {
             "content": result
         })
+
+    def mutation(self, request):
+        text = request['query']['name'] if ('name' in request['query']) else 'guest'
+
+        mutation_string = '''
+            mutation myFirstMutation {
+                createPerson(name:"%s") {
+                    ok
+                    person {
+                        name
+                    }
+                }
+            }
+        ''' % text
+
+        result = self.service.execute(mutation_string)
+
+        return BaseController.view(self, 'specific', {
+            "content": result
+        })
         
