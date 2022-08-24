@@ -13,10 +13,10 @@ docker compose up -d --build
 ```shell
 $ docker build -t python-server-image .
 
-$ docker run -p 8080:8080 \
+$ docker run -p 8080:8082 \
     --mount type=bind,src=$(pwd)/source,dst=/usr/src/app/source \ 
     -it \
-    --name python-server cgi-python
+    --name python-server python-server-image
 ```
 
 # Subindo a aplicação sem docker
@@ -35,15 +35,15 @@ Server started http://0.0.0.0:8082
 
 ```json
 {
-	'CreateHero': {
-		'id': '4',
-		'name': 'Jose',
-		'type': 'Droid',
-		'languages': [{
-			'description': 'droid_language',
-			'native': True
+	"CreateHero": {
+		"id": "4",
+		"name": "Jose",
+		"type": "Droid",
+		"languages": [{
+			"description": "droid_language",
+			"native": True
 		}],
-		'hability': 'sleep'
+		"hability": "sleep"
 	}
 }
 ```
@@ -52,15 +52,15 @@ Server started http://0.0.0.0:8082
 
 ```json
 {
-	'hero': {
-		'id': '1',
-		'name': 'Droid: one',
-		'type': 'Droid',
-		'languages': [{
-			'description': 'droid_language',
-			'native': True
+	"hero": {
+		"id": "1",
+		"name": "Droid: one",
+		"type": "Droid",
+		"languages": [{
+			"description": "droid_language",
+			"native": True
 		}],
-		'hability': 'eat'
+		"hability": "eat"
 	}
 }
 ```
@@ -70,15 +70,15 @@ Server started http://0.0.0.0:8082
 
 ```json
 {
-	'hero': {
-		'id': '5',
-		'name': 'Dev: two',
-		'type': 'Developer',
-		'languages': [{
-			'description': 'javascript',
-			'native': False
+	"hero": {
+		"id": "5",
+		"name": "Dev: two",
+		"type": "Developer",
+		"languages": [{
+			"description": "javascript",
+			"native": False
 		}],
-		'company': 'apple'
+		"company": "apple"
 	}
 }
 ```
