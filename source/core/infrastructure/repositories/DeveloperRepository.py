@@ -11,8 +11,8 @@ class DeveloperRepository(BaseRepository):
     }
 
     @staticmethod
-    def create(id, name, company, languages=['golang']):
-        return Developer(id, name, company, languages[0])
+    def create(name, company, languages=['golang']):
+        return Developer(14, name, company, languages[0])
 
     @staticmethod
     def isDeveloper(id):

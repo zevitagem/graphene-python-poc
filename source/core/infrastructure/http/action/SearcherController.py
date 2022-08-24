@@ -46,7 +46,6 @@ class SearcherController(BaseController):
         })
 
     def mutation(self, request):
-        id = request['query']['id']
         type = request['query']['type']
         name = request['query']['name']
         company = request['query']['company'] if 'company' in request['query'] else None
@@ -54,7 +53,7 @@ class SearcherController(BaseController):
 
         mutation_string = '''
             mutation myFirstMutation {
-                CreateHero(id:%s, type:"%s", name:"%s", company:"%s", hability:"%s") {
+                CreateHero(type:"%s", name:"%s", company:"%s", hability:"%s") {
                     id
                     name
                     type
@@ -73,7 +72,7 @@ class SearcherController(BaseController):
                     }
                 }
             }
-        ''' % (id, type, name, company, hability)
+        ''' % (type, name, company, hability)
 
         result = self.service.execute(mutation_string)
 

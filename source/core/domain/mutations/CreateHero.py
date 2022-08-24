@@ -8,7 +8,6 @@ from core.infrastructure.repositories.DroidRepository import DroidRepository
 class CreateHero(Mutation):
 
     class Arguments:
-        id = Int()
         name = String()
         type = String()
         company = String(required=False)
@@ -16,10 +15,10 @@ class CreateHero(Mutation):
 
     Output = Character
 
-    def mutate(root, info, id, name, type, company=None, hability=None):
+    def mutate(root, info, name, type, company=None, hability=None):
         if DroidRepository.isDroid(type):
-            entity = DroidRepository.create(id, name, hability)
+            entity = DroidRepository.create(name, hability)
         else:
-            entity = DeveloperRepository.create(id, name, company)
+            entity = DeveloperRepository.create(name, company)
 
         return entity

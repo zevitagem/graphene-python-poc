@@ -12,8 +12,8 @@ class DroidRepository(BaseRepository):
     }
 
     @staticmethod
-    def create(id, name, hability, languages=['droid_language']):
-        return Droid(id, name, hability, languages[0])
+    def create(name, hability, languages=['droid_language']):
+        return Droid(4, name, hability, languages[0])
 
     @staticmethod
     def isDroid(type):

@@ -49,4 +49,8 @@ Acesse o navegador e digite, por exemplo, a `URL`: http://localhost:8080/zetest
 - https://docs.docker.com/compose/compose-file/compose-file-v3/
 - https://docs.docker.com/engine/reference/commandline/run/
 
-http://localhost:8081/mutation?id=5&name=jose&type=Droid&hability=run
+## Urls
+http://localhost:8082/mutation?name=jose&type=Droid&hability=sleep
+
+http://localhost:8082/query?id=1 => Droid
+http://localhost:8082/query?id=12 => Developer
