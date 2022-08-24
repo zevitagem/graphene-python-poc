@@ -15,8 +15,43 @@ class SearcherController(BaseController):
             "content": 'Hello World, José!'
         })
 
+    def __end(self, graphQL_string):
+        result = self.service.execute(graphQL_string)
+        #result = json.dumps(result.data, indent=4)
+
+        return BaseController.view(self, 'specific', {
+            "content": result
+        })
+
+    def list(self, request):
+        query_string = '''
+        {
+            heroes {
+                id
+                name
+                type
+                languages {
+                    description
+                    native
+                }
+                ... on Droid {
+                    hability
+                }
+                ... on Developer {
+                    company
+                }
+            }
+        }
+        '''
+
+        return self.__end(query_string)
+
     def query(self, request):
-        id = request['query']['id'] if ('id' in request['query']) else 1
+        id = request['query']['id'] if ('id' in request['query']) else None
+        map = 'heroes' if id is None else 'hero'
+
+        if map == 'heroes':
+            return self.list(request)
 
         query_string = '''
         {
@@ -38,12 +73,7 @@ class SearcherController(BaseController):
         }
         ''' % id
 
-        result = self.service.execute(query_string)
-        #result = json.dumps(result.data, indent=4)
-
-        return BaseController.view(self, 'specific', {
-            "content": result
-        })
+        return self.__end(query_string)
 
     def mutation(self, request):
         type = request['query']['type']
@@ -74,8 +104,4 @@ class SearcherController(BaseController):
             }
         ''' % (type, name, company, hability)
 
-        result = self.service.execute(mutation_string)
-
-        return BaseController.view(self, 'specific', {
-            "content": result
-        })
+        return self.__end(mutation_string)

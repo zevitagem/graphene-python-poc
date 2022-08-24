@@ -1,5 +1,8 @@
 # Sobre
-Uma simples aplicação **Python** usando a biblioteca Graphene para realizar consultas e escritas no formato GraphQL.
+- Uma simples aplicação **Python**.
+- Utilizado a biblioteca Graphene para realizar consultas e escritas no formato GraphQL.
+- Aplicado uma leve organização de pastas
+- Usado o conceito de `views` para misturar `python code` com linguagem de marcação isoladamente.
 
 # Subir a aplicação com docker-compose
 ```shell
@@ -41,14 +44,14 @@ Server started http://0.0.0.0:8082
 		"type": "Droid",
 		"languages": [{
 			"description": "droid_language",
-			"native": True
+			"native": true
 		}],
 		"hability": "sleep"
 	}
 }
 ```
 
-- http://localhost:8082/query?id=1 => Droid
+- http://localhost:8082/query?id=1 => `Droid`
 
 ```json
 {
@@ -58,7 +61,7 @@ Server started http://0.0.0.0:8082
 		"type": "Droid",
 		"languages": [{
 			"description": "droid_language",
-			"native": True
+			"native": true
 		}],
 		"hability": "eat"
 	}
@@ -66,7 +69,7 @@ Server started http://0.0.0.0:8082
 ```
 
 
-- http://localhost:8082/query?id=12 => Developer
+- http://localhost:8082/query?id=12 => `Developer` : com parâmetro
 
 ```json
 {
@@ -76,12 +79,43 @@ Server started http://0.0.0.0:8082
 		"type": "Developer",
 		"languages": [{
 			"description": "javascript",
-			"native": False
+			"native": false
 		}],
 		"company": "apple"
 	}
 }
 ```
+
+- http://localhost:8082/list
+- http://localhost:8082/query => sem parâmetros
+
+```json
+{
+	"heroes": [{
+		"id": "6",
+		"name": "Dev: three",
+		"type": "Developer",
+		"languages": [{
+			"description": "python",
+			"native": false
+		}],
+		"company": "police"
+	}, {
+		"id": "1",
+		"name": "Droid: one",
+		"type": "Droid",
+		"languages": [{
+			"description": "droid_language",
+			"native": true
+		}],
+		"hability": "eat"
+	}]
+}
+```
+
+### Observações
+- Todos os dados estão `mocados`, ou seja, NÃO existe persistência alguma dos dados enviados.
+- IDS menores ou iguais a 10, serão considerados como `Droid`. Maiores que 10, serão considerados `Desenvolvedores`.
 
 ## Referências
 - https://graphene-python.org/
