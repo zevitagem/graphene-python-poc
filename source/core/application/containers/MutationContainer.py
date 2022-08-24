@@ -1,5 +1,7 @@
 from graphene import ObjectType
-from core.domain.mutations.CreatePerson import CreatePerson
+from core.domain.mutations.CreateHero import CreateHero
+
 
 class MutationContainer(ObjectType):
-    create_person = CreatePerson.Field()
+
+    CreateHero = CreateHero.Field()

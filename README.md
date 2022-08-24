@@ -48,3 +48,5 @@ Acesse o navegador e digite, por exemplo, a `URL`: http://localhost:8080/zetest
 - https://hub.docker.com/_/python
 - https://docs.docker.com/compose/compose-file/compose-file-v3/
 - https://docs.docker.com/engine/reference/commandline/run/
+
+http://localhost:8081/mutation?id=5&name=jose&type=Droid&hability=run

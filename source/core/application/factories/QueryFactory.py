@@ -1,5 +1,6 @@
 from core.application.containers.QueryContainer import QueryContainer
 
+
 class QueryFactory():
 
     @staticmethod

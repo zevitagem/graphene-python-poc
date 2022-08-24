@@ -1,12 +1,24 @@
-from graphene import ObjectType, String
+from graphene import ObjectType, Field, Int, List
+from core.domain.interfaces.Character import Character
+
+from core.infrastructure.repositories.DeveloperRepository import DeveloperRepository
+from core.infrastructure.repositories.DroidRepository import DroidRepository
+
 
 class QueryContainer(ObjectType):
 
-    hello = String(name=String(default_value="guest"))
-    goodbye = String()
+    hero = Field(
+        Character,
+        required=True,
+        id=Int(required=False)
+    )
 
-    def resolve_hello(root, info, name):
-        return f'Hello {name}!'
+    heroes = Field(
+        List(Character),
+        required=True
+    )
 
-    def resolve_goodbye(root, info):
-        return 'See ya!'
+    def resolve_hero(root, info, id):
+        if DeveloperRepository.isDeveloper(id):
+            return DeveloperRepository().find(id)
+        return DroidRepository().find(id)

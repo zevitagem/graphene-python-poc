@@ -1,4 +1,8 @@
-from core.application.factories import * 
+from core.application.factories import *
+
+from core.domain.types.Developer import Developer
+from core.domain.types.Droid import Droid
+
 
 class Processor():
 
@@ -12,7 +16,6 @@ class Processor():
         return dict((x, y) for x, y in tup)
 
     def __init__(self):
-        
         modules = self.modules()
 
         mutation = modules['mutation'].MutationFactory.handle()
@@ -20,7 +23,8 @@ class Processor():
 
         self.schema = modules['schema'].SchemaFactory.handle({
             "mutation": mutation,
-            "query": query
+            "query": query,
+            "types": [Developer, Droid]
         })
 
     def execute(self, arg):

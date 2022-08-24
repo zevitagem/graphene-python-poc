@@ -1,11 +1,12 @@
-from http.server import BaseHTTPRequestHandler, HTTPServer
 import os
+import re
+from http.server import BaseHTTPRequestHandler, HTTPServer
 from core.infrastructure.http.action.SearcherController import SearcherController
 from urllib import parse
-import re
 
 hostName = "0.0.0.0"
-serverPort = 8080
+serverPort = 8082
+
 
 class MyServer(BaseHTTPRequestHandler):
 
@@ -20,7 +21,7 @@ class MyServer(BaseHTTPRequestHandler):
         elif '?' in path:
             return path.split('?')[0]
         else:
-             return path
+            return path
 
     def get_query_parameters(self, url):
         query_params = {}
@@ -31,7 +32,7 @@ class MyServer(BaseHTTPRequestHandler):
                 )
             )
         return query_params
-    
+
     def end(self, response):
         self.wfile.write(bytes(response, "utf-8"))
 
@@ -47,13 +48,14 @@ class MyServer(BaseHTTPRequestHandler):
             })
 
             self.end(response)
-        except KeyboardInterrupt:
-            pass
+        except KeyboardInterrupt as KI:
+            raise KI
         except Exception as e:
             response = 'Sorry:: ' + str(e)
             self.end(response)
 
-if __name__ == "__main__":        
+
+if __name__ == "__main__":
     webServer = HTTPServer((hostName, serverPort), MyServer)
     print("Server started http://%s:%s" % (hostName, serverPort))
 
